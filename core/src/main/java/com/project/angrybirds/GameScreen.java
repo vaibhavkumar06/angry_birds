@@ -182,11 +182,11 @@ public class GameScreen implements Screen {
             font.draw(game.batch, scoreText, 800 - 100, 480 - 10); // Positioned at the top-right with some padding
 
             game.batch.end();
-
-            // Render the stage (which includes the pause button)
-            stage.act(delta);
-            stage.draw();
         }
+
+        // Render the stage (which includes the pause button)
+        stage.act(delta);
+        stage.draw();
 
         // If paused, skip updating game logic
         if (isPaused) {
