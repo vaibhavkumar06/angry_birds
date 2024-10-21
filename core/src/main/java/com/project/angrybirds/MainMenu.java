@@ -28,7 +28,7 @@ public class MainMenu implements Screen {
     public void show() {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
-        backgroundTexture = new Texture(Gdx.files.internal("MainMenu.png"));
+        backgroundTexture = new Texture(Gdx.files.internal("MainMenu.jpg"));
         Image background = new Image(new TextureRegionDrawable(backgroundTexture));
         background.setFillParent(true);
         stage.addActor(background);
@@ -36,13 +36,13 @@ public class MainMenu implements Screen {
 
 
         TextButton playButton = new TextButton("Play", skin);
-        playButton.setPosition(500, 430);
+        playButton.setPosition(900, 430);
         playButton.setSize(100, 40);
         stage.addActor(playButton);
 
 
         TextButton exitButton = new TextButton("Exit", skin);
-        exitButton.setPosition(500, 380);
+        exitButton.setPosition(900, 380);
         exitButton.setSize(100, 40);
         stage.addActor(exitButton);
 

@@ -38,16 +38,16 @@ public class LevelScreen implements Screen {
         level2LockedTexture = new Texture(Gdx.files.internal("level2_locked.png"));
         level3LockedTexture = new Texture(Gdx.files.internal("level2_locked.png"));
 
-        backgroundTexture = new Texture(Gdx.files.internal("Background.png"));
+        backgroundTexture = new Texture(Gdx.files.internal("Background.jpg"));
 
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
         playerIdLabel = new Label("Player ID: " + playerId, skin);
-        playerIdLabel.setPosition(285, Gdx.graphics.getHeight() - 40);  // Center
+        playerIdLabel.setPosition(1750, Gdx.graphics.getHeight() - 40);
         stage.addActor(playerIdLabel);
 
         settingsButton = new TextButton("Settings", skin);
-        settingsButton.setPosition(500, 50);
+        settingsButton.setPosition(1750, 50);
         settingsButton.setSize(120, 40);
         settingsButton.addListener(new ClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class LevelScreen implements Screen {
         stage.addActor(settingsButton);
 
         level1Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level1UnlockedTexture)));
-        level1Button.setPosition(200, 200);
+        level1Button.setPosition(800, 500);
         level1Button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -69,7 +69,7 @@ public class LevelScreen implements Screen {
 
 
         level2Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level2LockedTexture)));
-        level2Button.setPosition(300, 200);
+        level2Button.setPosition(900, 500);
         level2Button.setDisabled(true);
         level2Button.addListener(new ClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class LevelScreen implements Screen {
 
 
         level3Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level3LockedTexture)));
-        level3Button.setPosition(400, 200);
+        level3Button.setPosition(1000, 500);
         level3Button.setDisabled(true);
         level3Button.addListener(new ClickListener() {
             @Override
