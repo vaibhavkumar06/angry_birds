@@ -3,12 +3,14 @@ package com.project.angrybirds;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
+
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main implements ApplicationListener {
 
     @Override
     public void create() {
         // Prepare your application here.
+
     }
 
     @Override
