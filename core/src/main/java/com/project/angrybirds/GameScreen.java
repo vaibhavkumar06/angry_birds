@@ -8,16 +8,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-//import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class GameScreen implements Screen {
 
@@ -35,12 +33,11 @@ public class GameScreen implements Screen {
     TextButton resumeButton;
     TextButton restartButton;
     TextButton exitButton;
-    Texture pauseMenuBackground;
+    Texture pauseMenuBackground; // Pause menu background image
     Table pauseMenuTable;
 
     BitmapFont font;
     int score;
-
 
     Texture pauseButtonTexture;
     ImageButton pauseButton;
@@ -56,7 +53,7 @@ public class GameScreen implements Screen {
         // Load the background and catapult images
         backgroundImage = new Texture(Gdx.files.internal("game_background.jpg"));
         catapultImage = new Texture(Gdx.files.internal("catapult.png"));
-        pauseMenuBackground = new Texture(Gdx.files.internal("game_background.jpg"));
+        pauseMenuBackground = new Texture(Gdx.files.internal("pause_background.jpg")); // Load the pause menu background image
         bird1Image = new Texture(Gdx.files.internal("bird1.png"));
         bird2Image = new Texture(Gdx.files.internal("bird2.png"));
         bird3Image = new Texture(Gdx.files.internal("bird3.png"));
@@ -69,10 +66,10 @@ public class GameScreen implements Screen {
         // Pause button setup
         pauseButtonTexture = new Texture(Gdx.files.internal("pause_gamescreen.png"));
         pauseButton = new ImageButton(new TextureRegionDrawable(pauseButtonTexture));
-        pauseButton.setSize(32,32);
+        pauseButton.setSize(32, 32);
         pauseButton.setPosition(10, 480 - pauseButton.getHeight() - 10);  // Top-left position
 
-        // Load textures
+        // Load textures for blocks and pigs
         woodVerticalTexture = new Texture(Gdx.files.internal("veritical_thin.jpg"));
         woodHorizontalTexture = new Texture(Gdx.files.internal("horizontal_thin.jpg"));
         tntTexture = new Texture(Gdx.files.internal("tnt_bomb.jpg"));
@@ -103,8 +100,6 @@ public class GameScreen implements Screen {
         // Add pigs
         pigs.add(new Pig(pigTexture, 625, 60, 40, 40)); // Pig on first layer
         pigs.add(new Pig(pigTexture, 625, 203, 40, 40)); // Pig on second layer
-
-
 
         // Add listener for pause button click
         pauseButton.addListener(new com.badlogic.gdx.scenes.scene2d.utils.ClickListener() {
@@ -183,44 +178,22 @@ public class GameScreen implements Screen {
             font.draw(game.batch, scoreText, 800 - 100, 480 - 10); // Positioned at the top-right with some padding
 
             game.batch.end();
+        } else {
+            // Draw the pause menu background
+            game.batch.begin();
+            game.batch.draw(pauseMenuBackground, 0, 0, 800, 480); // Adjust position and size as needed
+            game.batch.end();
+
+            // Show the pause menu
+            pauseMenuTable.setVisible(true);
         }
 
         // Render the stage (which includes the pause button)
         stage.act(delta);
         stage.draw();
 
-//        // If paused, skip updating game logic
-//        if (isPaused) {
-//            pauseMenuTable.setVisible(true);
-//
-//            // Handle resume button click
-//            if (resumeButton.isPressed()) {
-//                isPaused = false; // Resume the game
-//                pauseMenuTable.setVisible(false); // Hide the pause menu
-//            }
-//
-//            // Handle restart button click
-//            if (restartButton.isPressed()) {
-//                // Add logic here to reset the game state
-//            }
-//
-//            // Handle exit button click
-//            if (exitButton.isPressed()) {
-//                Gdx.app.exit(); // Exit the game
-//            }
-//
-//            // Skip game updates when paused
-//            return;
-//        }
-
+        // Handle pause menu button clicks
         if (isPaused) {
-//            game.batch.begin();
-//            game.batch.draw(pauseMenuBackground, 200, 100, 800, 480);  // Adjust position and size as needed
-//            game.batch.end();
-
-            // Show the pause menu
-            pauseMenuTable.setVisible(true);
-
             // Handle resume button click
             if (resumeButton.isPressed()) {
                 isPaused = false; // Resume the game
@@ -236,14 +209,6 @@ public class GameScreen implements Screen {
             if (exitButton.isPressed()) {
                 Gdx.app.exit(); // Exit the game
             }
-
-            // Skip game updates when paused
-            return;
-        }
-
-        // If not paused, handle game logic here
-        if (!isPaused) {
-            // Game logic updates
         }
     }
 
@@ -275,20 +240,12 @@ public class GameScreen implements Screen {
         bird1Image.dispose();
         bird2Image.dispose();
         bird3Image.dispose();
-        pauseButtonTexture.dispose();
+        pauseMenuBackground.dispose(); // Dispose of the pause menu background
         woodVerticalTexture.dispose();
         woodHorizontalTexture.dispose();
         tntTexture.dispose();
         pigTexture.dispose();
         stage.dispose();
-        font.dispose(); // Dispose the font when no longer needed
-
-        // Dispose blocks and pigs
-        for (Block block : blocks) {
-            block.dispose();
-        }
-        for (Pig pig : pigs) {
-            pig.dispose();
-        }
+        font.dispose();
     }
 }

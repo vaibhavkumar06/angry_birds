@@ -31,9 +31,9 @@ public class MainMenu implements Screen {
 
     @Override
     public void show() {
-        stage = new Stage(new ScreenViewport());                                        //went with screenviewport because its ideal for menus.
-        Gdx.input.setInputProcessor(stage);                                             //stage (container for actor and viewport)
-        backgroundTexture = new Texture(Gdx.files.internal("mbackground.jpg"));
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+        backgroundTexture = new Texture(Gdx.files.internal("mmb.png"));
         Image background = new Image(new TextureRegionDrawable(backgroundTexture));
         background.setFillParent(true);
         stage.addActor(background);

@@ -58,7 +58,7 @@ public class LevelScreen implements Screen {
         stage.addActor(settingsButton);
 
         level1Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level1UnlockedTexture)));
-        level1Button.setPosition(800, 500);
+        level1Button.setPosition(800, 400);
         level1Button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -69,7 +69,7 @@ public class LevelScreen implements Screen {
 
 
         level2Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level2LockedTexture)));
-        level2Button.setPosition(900, 500);
+        level2Button.setPosition(900, 400);
         level2Button.setDisabled(true);
         level2Button.addListener(new ClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class LevelScreen implements Screen {
 
 
         level3Button = new ImageButton(new TextureRegionDrawable(new TextureRegion(level3LockedTexture)));
-        level3Button.setPosition(1000, 500);
+        level3Button.setPosition(1000, 400);
         level3Button.setDisabled(true);
         level3Button.addListener(new ClickListener() {
             @Override
