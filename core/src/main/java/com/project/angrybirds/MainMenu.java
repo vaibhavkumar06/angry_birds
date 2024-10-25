@@ -4,11 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -19,6 +22,8 @@ public class MainMenu implements Screen {
     private Skin skin;
     private MainGame game;
 
+    private ImageButton playButton;
+    private ImageButton exitButton;
 
     public MainMenu(MainGame game) {
         this.game = game;
@@ -26,9 +31,9 @@ public class MainMenu implements Screen {
 
     @Override
     public void show() {
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
-        backgroundTexture = new Texture(Gdx.files.internal("MainMenu.jpg"));
+        stage = new Stage(new ScreenViewport());                                        //went with screenviewport because its ideal for menus.
+        Gdx.input.setInputProcessor(stage);                                             //stage (container for actor and viewport)
+        backgroundTexture = new Texture(Gdx.files.internal("mbackground.jpg"));
         Image background = new Image(new TextureRegionDrawable(backgroundTexture));
         background.setFillParent(true);
         stage.addActor(background);

@@ -5,7 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -36,6 +35,7 @@ public class GameScreen implements Screen {
     TextButton resumeButton;
     TextButton restartButton;
     TextButton exitButton;
+    Texture pauseMenuBackground;
     Table pauseMenuTable;
 
     BitmapFont font;
@@ -56,6 +56,7 @@ public class GameScreen implements Screen {
         // Load the background and catapult images
         backgroundImage = new Texture(Gdx.files.internal("game_background.jpg"));
         catapultImage = new Texture(Gdx.files.internal("catapult.png"));
+        pauseMenuBackground = new Texture(Gdx.files.internal("game_background.jpg"));
         bird1Image = new Texture(Gdx.files.internal("bird1.png"));
         bird2Image = new Texture(Gdx.files.internal("bird2.png"));
         bird3Image = new Texture(Gdx.files.internal("bird3.png"));
@@ -188,8 +189,36 @@ public class GameScreen implements Screen {
         stage.act(delta);
         stage.draw();
 
-        // If paused, skip updating game logic
+//        // If paused, skip updating game logic
+//        if (isPaused) {
+//            pauseMenuTable.setVisible(true);
+//
+//            // Handle resume button click
+//            if (resumeButton.isPressed()) {
+//                isPaused = false; // Resume the game
+//                pauseMenuTable.setVisible(false); // Hide the pause menu
+//            }
+//
+//            // Handle restart button click
+//            if (restartButton.isPressed()) {
+//                // Add logic here to reset the game state
+//            }
+//
+//            // Handle exit button click
+//            if (exitButton.isPressed()) {
+//                Gdx.app.exit(); // Exit the game
+//            }
+//
+//            // Skip game updates when paused
+//            return;
+//        }
+
         if (isPaused) {
+//            game.batch.begin();
+//            game.batch.draw(pauseMenuBackground, 200, 100, 800, 480);  // Adjust position and size as needed
+//            game.batch.end();
+
+            // Show the pause menu
             pauseMenuTable.setVisible(true);
 
             // Handle resume button click

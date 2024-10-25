@@ -1,10 +1,13 @@
 package com.project.angrybirds;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainGame extends Game {
     private MainMenu mainMenu;
     private LevelScreen levelScreen;
+    private GameScreen gameScreen;
     private String playerId;
 
     @Override
@@ -14,6 +17,7 @@ public class MainGame extends Game {
         mainMenu = new MainMenu(this);
         setScreen(mainMenu);
     }
+
     public void switchToLevelScreen() {
         if (levelScreen == null) {
 
@@ -22,6 +26,8 @@ public class MainGame extends Game {
         setScreen(levelScreen);
     }
 
+
+
     public String getPlayerId() {
         return playerId;
     }
@@ -29,4 +35,9 @@ public class MainGame extends Game {
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
+
+    public void render() {
+        super.render(); // important!
+    }
+
 }

@@ -38,7 +38,7 @@ public class LevelScreen implements Screen {
         level2LockedTexture = new Texture(Gdx.files.internal("level2_locked.png"));
         level3LockedTexture = new Texture(Gdx.files.internal("level2_locked.png"));
 
-        backgroundTexture = new Texture(Gdx.files.internal("Background.jpg"));
+        backgroundTexture = new Texture(Gdx.files.internal("l_background2.jpg"));
 
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
@@ -170,3 +170,4 @@ public class LevelScreen implements Screen {
         backgroundTexture.dispose();
     }
 }
+
